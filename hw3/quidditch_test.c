@@ -60,7 +60,7 @@ void *run_simulation(void *arg) {
 
 void create_new_player(pthread_t *thread, char *team, double arrival_time, double play_time) {
   player_schedule_t *player_schedule = malloc(sizeof(player_schedule_t));
-  player_schedule->player = malloc(sizeof(player_schedule_t));
+  player_schedule->player = malloc(sizeof(player_t));
   player_schedule->player->team = team;
   player_schedule->arrival_time = (unsigned int) arrival_time * USEC_TO_SEC;
   player_schedule->play_time = (unsigned int) play_time * USEC_TO_SEC;
