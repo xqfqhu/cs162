@@ -55,6 +55,18 @@ WordCount *find_word(WordCount *wchead, char *word) {
 
 void add_word(WordCount **wclist, char *word) {
   /* If word is present in word_counts list, increment the count, otw insert with count 1. */
+  
+  WordCount *wc = find_word(*wclist, word);
+  if (wc != NULL){
+    wc->count++;
+  }
+  else{
+    WordCount *new_wc = malloc(sizeof(WordCount));
+    new_wc->count = 1;
+    new_wc->word = new_string(word);
+    new_wc->next = *wclist;
+    *wclist = new_wc;
+  }
 }
 
 void fprint_words(WordCount *wchead, FILE *ofile) {
