@@ -35,6 +35,10 @@ void init_words(WordCount **wclist) {
 
 size_t len_words(WordCount *wchead) {
     size_t len = 0;
+    while(wchead != NULL){
+      len++;
+      wchead = wchead->next;
+    }
     return len;
 }
 
