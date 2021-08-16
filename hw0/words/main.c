@@ -71,6 +71,22 @@ int num_words(FILE* infile) {
  * Useful functions: fgetc(), isalpha(), tolower(), add_word().
  */
 void count_words(WordCount **wclist, FILE *infile) {
+  char c;
+  char word[MAX_WORD_LEN];
+  int num_c = 0;
+  while ((c = fgetc(infile)) != EOF){
+    if (!isalpha(c)){
+      word[num_c] = '\0';
+      
+      add_word(wclist, word);
+      num_c = 0;
+    }
+    else{
+      c = tolower(c);
+      word[num_c]= c;
+      num_c++;
+    }
+  }
 }
 
 /*
