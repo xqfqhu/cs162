@@ -46,7 +46,7 @@ WordCount *word_counts = NULL;
  */
 int num_words(FILE* infile) {
   int num_words = 0;
-  int c;
+  char c;
   bool word_counted = false;
   while ((c = fgetc(infile)) != EOF){
     if (!isalpha(c)){
