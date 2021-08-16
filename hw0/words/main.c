@@ -89,6 +89,17 @@ void count_words(WordCount **wclist, FILE *infile) {
   }
 }
 
+
+void word_counts_free(WordCount **wclist){
+  WordCount *cur = *wclist;
+  WordCount *prev = NULL;
+  while(cur != NULL){
+    free(cur->word);
+    prev = cur;
+    cur = cur->next;
+    free(prev);
+  }
+}
 /*
  * Comparator to sort list by frequency.
  * Useful function: strcmp().
@@ -194,6 +205,7 @@ int main (int argc, char *argv[]) {
 
     printf("The frequencies of each word are: \n");
     fprint_words(word_counts, stdout);
+    word_counts_free(&word_counts);
 }
   return 0;
 }
