@@ -41,6 +41,15 @@ size_t len_words(WordCount *wchead) {
 WordCount *find_word(WordCount *wchead, char *word) {
   /* Return count for word, if it exists */
   WordCount *wc = NULL;
+  while (wchead != NULL){
+    if (strcmp(wchead->word, word) == 0){
+      wc = wchead;
+      break;
+    }
+    else{
+      wchead = wchead->next;
+    }
+  }
   return wc;
 }
 
